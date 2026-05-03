@@ -306,7 +306,9 @@
 
   <script>
     const el = document.getElementById('last-updated');
-    el.textContent = 'Last updated ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const lastModified = new Date(document.lastModified);
+    const dateToUse = isNaN(lastModified) ? new Date() : lastModified;
+    el.textContent = 'Last updated ' + dateToUse.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
     function copyEmail(btn) {
       navigator.clipboard.writeText('contact@anasfarooq.com').then(() => {
